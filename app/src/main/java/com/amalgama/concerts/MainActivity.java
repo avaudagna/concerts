@@ -34,19 +34,19 @@ public class MainActivity extends AppCompatActivity {
         viewCarajo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Muzzarella", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Carajo", Toast.LENGTH_SHORT).show();
             }
         });
         viewAbel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Napolitana", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Abel", Toast.LENGTH_SHORT).show();
             }
         });
         viewBomba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Jamon y Muzzarella", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "La bomba", Toast.LENGTH_SHORT).show();
             }
         });
     }
