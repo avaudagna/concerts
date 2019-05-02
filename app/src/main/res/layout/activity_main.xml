@@ -6,7 +6,7 @@
               su atributo orientation, vertical (caso actual) u horizontal.
          En este momento este esta siendo el layout padre de todos en la jerarquia. -->
     <LinearLayout
-        android:id="@+id/pizza_container"
+        android:id="@+id/concerts_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
