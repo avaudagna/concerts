@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             android:maxWidth="250dp"
             android:singleLine="true"
-            android:text="La bomba del tiempo"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -40,7 +39,6 @@
             android:paddingRight="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 de Julio"
             android:textSize="18sp"
             android:layout_marginLeft="8dp"
             android:layout_gravity="bottom"/>
