@@ -48,12 +48,7 @@ public class MainActivity extends AppCompatActivity {
         ((ImageView) concertItem.findViewById(R.id.image)).setImageResource(concert.getImageId()); //Para el ImageView el resourceId de la imagen (resourceId porque tenemos guardada la imagen en el proyecto, sino esto seria diferente)
         ((TextView) concertItem.findViewById(R.id.fecha)).setText(String.valueOf(concert.getFecha()));
         //Le agregamos el listener de OnClick a la vista.
-        concertItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), concert.getTitle(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        concertItem.setOnClickListener(new ConcertOnClickListener(concert.getTitle()));
         return concertItem;
     }
 }
