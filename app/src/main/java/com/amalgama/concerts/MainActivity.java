@@ -12,21 +12,19 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ConcertRepository repository = new ConcertRepository();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View viewCarajo = createConcertView(new Concert("Carajo", "25 de Junio", R.drawable.carajo));
-        View viewAbel = createConcertView(new Concert("Abel Pintos", "28 de Junio", R.drawable.abel));
-        View viewBomba = createConcertView(new Concert("La bomba del tiempo", "3 de Julio", R.drawable.bomba));
-        View viewCirse = createConcertView(new Concert("Cirse", "7 de Julio", R.drawable.cirse));
+        final LinearLayout concertContainer = (LinearLayout) findViewById(R.id.concerts_container);
 
-        LinearLayout concertContainer = (LinearLayout) findViewById(R.id.concerts_container);
-        concertContainer.addView(viewCarajo);
-        concertContainer.addView(viewAbel);
-        concertContainer.addView(viewBomba);
-        concertContainer.addView(viewCirse);
+        for(Concert concert : repository.getConcerts()) {
+            View view = createConcertView(concert);
+            concertContainer.addView(view))
+        }
     }
 
 
@@ -44,18 +42,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(concertItem.getContext(), concert.getTitle(), Toast.LENGTH_SHORT).show();
-                //Se crea un intent especificando el contexto del que se parte y el .class del activity destino.
                 Intent intent = new Intent(concertItem.getContext(), DetailsActivity.class);
-                //Agregar extras es opcional, pero necesario para pasar informacion entre acitivties (este es un metodo, hay otros, ya los veremos).
                 intent.putExtra("titulo", concert.getTitle());
                 intent.putExtra("imagenId", concert.getImageId());
                 intent.putExtra("fecha", concert.getFecha());
-                //Con este metodo se inicia la transicion del intent y queda en el backstack el activity del que venimos para ser recuperado con la
-                //accion backpress.
                 concertItem.getContext().startActivity(intent);
             }
         });
-
         return concertItem;
     }
 }
