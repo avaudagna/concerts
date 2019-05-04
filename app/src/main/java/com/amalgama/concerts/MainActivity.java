@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import concerts.ConcertOnClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,22 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) concertItem.findViewById(R.id.title)).setText(concert.getTitle()); //Para el TextView nos interesa setear el texto
         ((ImageView) concertItem.findViewById(R.id.image)).setImageResource(concert.getImageId()); //Para el ImageView el resourceId de la imagen (resourceId porque tenemos guardada la imagen en el proyecto, sino esto seria diferente)
         ((TextView) concertItem.findViewById(R.id.fecha)).setText(String.valueOf(concert.getFecha()));
-        concertItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(concertItem.getContext(), concert.getTitle(), Toast.LENGTH_SHORT).show();
-                //Se crea un intent especificando el contexto del que se parte y el .class del activity destino.
-                Intent intent = new Intent(concertItem.getContext(), DetailsActivity.class);
-                //Agregar extras es opcional, pero necesario para pasar informacion entre acitivties (este es un metodo, hay otros, ya los veremos).
-                intent.putExtra("titulo", concert.getTitle());
-                intent.putExtra("imagenId", concert.getImageId());
-                intent.putExtra("fecha", concert.getFecha());
-                //Con este metodo se inicia la transicion del intent y queda en el backstack el activity del que venimos para ser recuperado con la
-                //accion backpress.
-                concertItem.getContext().startActivity(intent);
-            }
-        });
-
+        concertItem.setOnClickListener(new ConcertOnClickListener(concert));
         return concertItem;
     }
 }
